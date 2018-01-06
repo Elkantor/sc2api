@@ -10,5 +10,10 @@ var settings={
 }
 // var result = vec1.loadSettings(settings);
 var agent = new sc2.SC2Agent(2);
-var player_setup = new sc2.SC2PlayerSetup(agent);
+var player = {
+    type: "Participant",
+    race: "Terran",
+    difficulty: "Easy"
+}
+var player_setup = new sc2.SC2PlayerSetup(player, agent);
 console.log(player_setup);
