@@ -1,6 +1,7 @@
 #include <node.h>
 #include "nan.h"
 #include "coordinator.h"
+#include "player_setup.h"
 #include <windows.h>
 #include <sc2utils/sc2_manage_process.h>
 
@@ -13,9 +14,6 @@ NAN_MODULE_INIT(SC2Coordinator::Init) {
     ctor->SetClassName(Nan::New("SC2Coordinator").ToLocalChecked());
 
     // link our getters and setter to the object property
-    Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("x").ToLocalChecked(), SC2Coordinator::HandleGetters, SC2Coordinator::HandleSetters);
-    Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("y").ToLocalChecked(), SC2Coordinator::HandleGetters, SC2Coordinator::HandleSetters);
-    Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("z").ToLocalChecked(), SC2Coordinator::HandleGetters, SC2Coordinator::HandleSetters);
 
     Nan::SetPrototypeMethod(ctor, "loadSettings", LoadSettings);
 
@@ -28,24 +26,14 @@ NAN_METHOD(SC2Coordinator::New) {
         return Nan::ThrowError(Nan::New("SC2Coordinator::New - called without new keyword").ToLocalChecked());
     }
 
-    // expect exactly 3 arguments
-    if(info.Length() != 3) {
-        return Nan::ThrowError(Nan::New("SC2Coordinator::New - expected arguments x, y, z").ToLocalChecked());
-    }
-
-    // expect arguments to be numbers
-    if(!info[0]->IsNumber() || !info[1]->IsNumber() || !info[2]->IsNumber()) {
-        return Nan::ThrowError(Nan::New("SC2Coordinator::New - expected arguments to be numbers").ToLocalChecked());
+    // expect exactly 0 arguments
+    if(info.Length() != 0) {
+        return Nan::ThrowError(Nan::New("SC2Coordinator::New - constructor expected 0 argument").ToLocalChecked());
     }
 
     // create a new instance and wrap our javascript instance
     SC2Coordinator* coordinator = new SC2Coordinator();
     coordinator->Wrap(info.Holder());
-
-    // initialize it's values
-    coordinator->x = info[0]->NumberValue();
-    coordinator->y = info[1]->NumberValue();
-    coordinator->z = info[2]->NumberValue();
 
     // return the wrapped javascript instance
     info.GetReturnValue().Set(info.Holder());
@@ -113,20 +101,20 @@ NAN_METHOD(SC2Coordinator::LoadSettings) {
 }
 
 NAN_METHOD(SC2Coordinator::SetParticipants) {
-  // unwrap this SC2Coordinator
   SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
 
-  // expect at least 1 argument (the)
-  if(info.Length() < 1) {
+  // expect 1 argument
+  if(info.Length() != 1) {
       return Nan::ThrowError(Nan::New("SC2Coordinator::New - expected argument(s): an array which contains two participants (a player and a bot)").ToLocalChecked());
   }
 
   // expect argument to be an array
   if(!info[0]->IsArray()){
-      return Nan::ThrowError(Nan::New("SC2Coordinator::SetParticipants - expected argument to be an array").ToLocalChecked());
+      return Nan::ThrowError(Nan::New("SC2Coordinator::SetParticipants - expected argument to be an array of SC2PlayerSetup").ToLocalChecked());
   }
 
   v8::Local<v8::Array> array_participants = v8::Local<v8::Array>::Cast(info[0]);
+  std::vector<SC2PlayerSetup> array;
 
 }
 
@@ -134,15 +122,7 @@ NAN_GETTER(SC2Coordinator::HandleGetters) {
   SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
 
   std::string propertyName = std::string(*Nan::Utf8String(property));
-  if (propertyName == "x") {
-    info.GetReturnValue().Set(self->x);
-  } else if (propertyName == "y") {
-    info.GetReturnValue().Set(self->y);
-  } else if (propertyName == "z") {
-    info.GetReturnValue().Set(self->z);
-  } else {
-    info.GetReturnValue().Set(Nan::Undefined());
-  }
+  info.GetReturnValue().Set(Nan::Undefined());
 }
 
 NAN_SETTER(SC2Coordinator::HandleSetters) {
@@ -153,11 +133,4 @@ NAN_SETTER(SC2Coordinator::HandleSetters) {
   }
 
   std::string propertyName = std::string(*Nan::Utf8String(property));
-  if (propertyName == "x") {
-    self->x = value->NumberValue();
-  } else if (propertyName == "y") {
-    self->y = value->NumberValue();
-  } else if (propertyName == "z") {
-    self->z = value->NumberValue();
-  }
 }

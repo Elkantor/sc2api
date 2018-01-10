@@ -2,6 +2,7 @@
 #include "nan.h"
 #include "player_setup.h"
 #include "agent.h"
+#include "bot.h"
 
 Nan::Persistent<v8::FunctionTemplate> SC2PlayerSetup::constructor;
 
@@ -15,6 +16,9 @@ NAN_MODULE_INIT(SC2PlayerSetup::Init) {
     Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("difficulty").ToLocalChecked(), SC2PlayerSetup::HandleGetters);
     Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("race").ToLocalChecked(), SC2PlayerSetup::HandleGetters);
     Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("type").ToLocalChecked(), SC2PlayerSetup::HandleGetters);
+    Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("agent").ToLocalChecked(), SC2PlayerSetup::HandleGetters);
+
+    Nan::SetPrototypeMethod(ctor, "setAgent", SetAgent);
 
     target->Set(Nan::New("SC2PlayerSetup").ToLocalChecked(), ctor->GetFunction());
 }
@@ -105,21 +109,13 @@ NAN_METHOD(SC2PlayerSetup::New) {
     }else{
         return Nan::ThrowError(Nan::New("SC2PlayerSetup::New - the difficulty must be one of this string : 'Easy', 'Medium' or 'MediumHard', 'Hard', 'HardVeryHard', 'VeryHard', 'CheatVision', 'CheatMoney', 'CheatInsane'").ToLocalChecked());
     }
-
-    if(info.Length() == 2){
-        if(!info[1]->IsObject()){
-            return Nan::ThrowError(Nan::New("SC2PlayerSetup::New - expected argument 2 to be a SC2Agent").ToLocalChecked());
-        }
-        Nan::MaybeLocal<v8::Object> agent_js = Nan::To<v8::Object>(info[1]);
-        if(agent_js.IsEmpty()){
-            return Nan::ThrowError(Nan::New("SC2PlayerSetup::New - argument  2 must be a SC2Agent Object").ToLocalChecked());
-        }
-        SC2Agent* agent = Nan::ObjectWrap::Unwrap<SC2Agent>(agent_js.ToLocalChecked());
-        player_setup->player_setup_->agent = agent->agent_;
-    }
-
-
     info.GetReturnValue().Set(info.Holder());
+}
+
+NAN_METHOD(SC2PlayerSetup::SetAgent) {
+    SC2PlayerSetup* self = Nan::ObjectWrap::Unwrap<SC2PlayerSetup>(info.This());
+    self->persistent_agent_.Reset(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    info.GetReturnValue().Set(Nan::New(self->persistent_agent_));
 }
 
 NAN_GETTER(SC2PlayerSetup::HandleGetters) {
@@ -127,39 +123,39 @@ NAN_GETTER(SC2PlayerSetup::HandleGetters) {
 
     std::string property_name = std::string(*Nan::Utf8String(property));
     if (property_name == "difficulty") {
-        int player_difficulty = self->player_setup_->difficulty;
-        switch(player_difficulty){
-            case 1: 
+        switch(self->player_setup_->difficulty){
+            case sc2::Difficulty::VeryEasy :  
                 info.GetReturnValue().Set(Nan::New("VeryEasy").ToLocalChecked());
                 break;
-            case 2:
+            case sc2::Difficulty::Easy :
                 info.GetReturnValue().Set(Nan::New("Easy").ToLocalChecked());
                 break;
-            case 3:
+            case sc2::Difficulty::Medium :
                 info.GetReturnValue().Set(Nan::New("Medium").ToLocalChecked());
                 break;
-            case 4:
+            case sc2::Difficulty::MediumHard :
                 info.GetReturnValue().Set(Nan::New("MediumHard").ToLocalChecked());
                 break;
-            case 5:
+            case sc2::Difficulty::Hard :
                 info.GetReturnValue().Set(Nan::New("Hard").ToLocalChecked());
                 break;
-            case 6:
+            case sc2::Difficulty::HardVeryHard :
                 info.GetReturnValue().Set(Nan::New("HardVeryHard").ToLocalChecked());
                 break;
-            case 7:
+            case sc2::Difficulty::VeryHard :
                 info.GetReturnValue().Set(Nan::New("VeryHard").ToLocalChecked());
                 break;
-            case 8:
+            case sc2::Difficulty::CheatVision :
                 info.GetReturnValue().Set(Nan::New("CheatVision").ToLocalChecked());
                 break;
-            case 9:
+            case sc2::Difficulty::CheatMoney :
                 info.GetReturnValue().Set(Nan::New("CheatMoney").ToLocalChecked());
                 break;
-            case 10:
+            case sc2::Difficulty::CheatInsane :
                 info.GetReturnValue().Set(Nan::New("CheatInsane").ToLocalChecked());
                 break;
             default:
+                info.GetReturnValue().Set(Nan::New("error").ToLocalChecked());
                 break;
         }   
     } else if (property_name == "race") {
@@ -177,24 +173,28 @@ NAN_GETTER(SC2PlayerSetup::HandleGetters) {
                 info.GetReturnValue().Set(Nan::New("Random").ToLocalChecked());
                 break;
             default:
+                info.GetReturnValue().Set(Nan::New("error").ToLocalChecked());
                 break;
         }
     } else if (property_name == "type") {
         int player_type = self->player_setup_->type;
         switch(player_type){
-            case 1:
+            case sc2::PlayerType::Participant :
                 info.GetReturnValue().Set(Nan::New("Participant").ToLocalChecked());
                 break;
-            case 2:
+            case sc2::PlayerType::Computer :
                 info.GetReturnValue().Set(Nan::New("Computer").ToLocalChecked());
                 break;
-            case 3:
+            case sc2::PlayerType::Observer :
                 info.GetReturnValue().Set(Nan::New("Observer").ToLocalChecked());
                 break;
             default:
+                info.GetReturnValue().Set(Nan::New("error").ToLocalChecked());
                 break;
         }
-    } else {
+    }else if(property_name == "agent"){
+        info.GetReturnValue().Set(Nan::New(self->persistent_agent_));
+    }else {
         info.GetReturnValue().Set(Nan::Undefined());
     }
 }

@@ -3,10 +3,6 @@
 
 class SC2Coordinator : public Nan::ObjectWrap {
 public:
-  double x;
-  double y;
-  double z;
-
   static NAN_MODULE_INIT(Init);
   static NAN_METHOD(New);
   static NAN_METHOD(LoadSettings);
@@ -19,6 +15,5 @@ public:
 private:
     sc2::Coordinator* sc2_coordinator_;
     std::string map_;
-    sc2::Agent* agent_;
-    std::vector<sc2::PlayerSetup>* participants_;
+    std::vector<class SC2PlayerSetup*>* participants_;
 };

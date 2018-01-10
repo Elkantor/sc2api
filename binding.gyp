@@ -12,7 +12,8 @@
         "src/index.cc",
         "src/private/coordinator.cc",
         "src/private/agent.cc",
-        "src/private/player_setup.cc"
+        "src/private/player_setup.cc",
+        "src/private/bot.cc"
       ],
       "link_settings":
       {

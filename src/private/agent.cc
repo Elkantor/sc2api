@@ -1,6 +1,7 @@
 #include <node.h>
 #include "nan.h"
 #include "agent.h"
+#include "bot.h"
 
 Nan::Persistent<v8::FunctionTemplate> SC2Agent::constructor;
 
@@ -9,6 +10,11 @@ NAN_MODULE_INIT(SC2Agent::Init) {
     constructor.Reset(ctor);
     ctor->InstanceTemplate()->SetInternalFieldCount(1);
     ctor->SetClassName(Nan::New("SC2Agent").ToLocalChecked());
+
+    //Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("onGameStart").ToLocalChecked(), SC2Agent::HandleGetters, SC2Agent::HandleSetters);
+    Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("onGameStart").ToLocalChecked(), SC2Agent::HandleGetters, SC2Agent::HandleSetters);
+
+    //Nan::SetPrototypeMethod(ctor, "onGameStart", OnGameStart);
 
     target->Set(Nan::New("SC2Agent").ToLocalChecked(), ctor->GetFunction());
 }
@@ -19,14 +25,9 @@ NAN_METHOD(SC2Agent::New) {
         return Nan::ThrowError(Nan::New("SC2Agent::New - called without new keyword").ToLocalChecked());
     }
 
-    // expect exactly 1 argument
-    if(info.Length() != 1) {
-        return Nan::ThrowError(Nan::New("SC2Agent::New - expected argument x").ToLocalChecked());
-    }
-
-    // expect arguments to be numbers
-    if(!info[0]->IsNumber()) {
-        return Nan::ThrowError(Nan::New("SC2Agent::New - expected argument to be number").ToLocalChecked());
+    // expect exactly 0 argument
+    if(info.Length() != 0) {
+        return Nan::ThrowError(Nan::New("SC2Agent::New - constructor expected 0 argument").ToLocalChecked());
     }
 
     // create a new instance and wrap our javascript instance
@@ -34,8 +35,44 @@ NAN_METHOD(SC2Agent::New) {
     agent->Wrap(info.Holder());
 
     // initialize it's values
-    agent->x = info[0]->NumberValue();
 
     // return the wrapped javascript instance
     info.GetReturnValue().Set(info.Holder());
+}
+
+// NAN_METHOD(SC2Agent::OnGameStart) {
+//     SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
+//     if(!info[0]->IsFunction()){
+//         return Nan::ThrowError(Nan::New("SC2Agent::OnGameStart - expected argument to be a function").ToLocalChecked());
+//     }
+//     self->peristent_onGameStart_.Reset(Nan::To<v8::Function>(info[0]).ToLocalChecked());
+//     v8::Local<v8::Function> test = Nan::New(self->peristent_onGameStart_);
+//     char* name = (*Nan::Utf8String(test->GetName()->ToString()));
+//     info.GetReturnValue().Set(test);
+
+// }
+
+NAN_GETTER(SC2Agent::HandleGetters) {
+  SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
+
+  std::string propertyName = std::string(*Nan::Utf8String(property));
+  if (propertyName == "onGameStart") {
+    info.GetReturnValue().Set(Nan::New(self->peristent_onGameStart_));
+  }else {
+    info.GetReturnValue().Set(Nan::New("ko").ToLocalChecked());
+  }
+}
+
+NAN_SETTER(SC2Agent::HandleSetters) {
+    SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
+
+    std::string propertyName = std::string(*Nan::Utf8String(property));
+    if (propertyName == "onGameStart") {
+        SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
+        if(!value->IsFunction()){
+            return Nan::ThrowError(Nan::New("SC2Agent::OnGameStart - expected argument to be a function").ToLocalChecked());
+        }
+        self->peristent_onGameStart_.Reset(Nan::To<v8::Function>(value).ToLocalChecked());
+        info.GetReturnValue().Set(Nan::New(self->peristent_onGameStart_));
+        }
 }
