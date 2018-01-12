@@ -14,6 +14,7 @@ NAN_MODULE_INIT(SC2Coordinator::Init) {
     ctor->SetClassName(Nan::New("SC2Coordinator").ToLocalChecked());
 
     // link our getters and setter to the object property
+    Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("participants").ToLocalChecked(), SC2Coordinator::HandleGetters, SC2Coordinator::HandleSetters);
 
     Nan::SetPrototypeMethod(ctor, "loadSettings", LoadSettings);
 
@@ -100,37 +101,48 @@ NAN_METHOD(SC2Coordinator::LoadSettings) {
   info.GetReturnValue().Set(Nan::New(settings.c_str()).ToLocalChecked());
 }
 
-NAN_METHOD(SC2Coordinator::SetParticipants) {
-  SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
-
-  // expect 1 argument
-  if(info.Length() != 1) {
-      return Nan::ThrowError(Nan::New("SC2Coordinator::New - expected argument(s): an array which contains two participants (a player and a bot)").ToLocalChecked());
-  }
-
-  // expect argument to be an array
-  if(!info[0]->IsArray()){
-      return Nan::ThrowError(Nan::New("SC2Coordinator::SetParticipants - expected argument to be an array of SC2PlayerSetup").ToLocalChecked());
-  }
-
-  v8::Local<v8::Array> array_participants = v8::Local<v8::Array>::Cast(info[0]);
-  std::vector<SC2PlayerSetup> array;
-
+NAN_METHOD(SC2Coordinator::LaunchStarcraft){
+    SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
+    sc2::Agent agent;
+    v8::Local<v8::Array> array = Nan::New(self->participants_);
+    for(int i = 0; i < array->Length(); i++){
+        SC2PlayerSetup* player_setup = Nan::ObjectWrap::Unwrap<SC2PlayerSetup>(array->Get(i));
+        if(player_setup->persistent_agent_->){
+            
+        }
+    }
+    agent = self->participants_
+    self->sc2_coordinator_->SetParticipants({
+        sc2::CreateParticipant(sc2::Race::Terran, &agent),
+        sc2::CreateComputer(sc2::Race::Zerg)
+    });
+    self->sc2_coordinator_->LaunchStarcraft();
+    self->sc2_coordinator_->StartGame(self->map_);
+    while (self->sc2_coordinator_->Update()) {
+    }
 }
 
 NAN_GETTER(SC2Coordinator::HandleGetters) {
   SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
 
   std::string propertyName = std::string(*Nan::Utf8String(property));
-  info.GetReturnValue().Set(Nan::Undefined());
+  if (propertyName == "participants") {
+    //info.GetReturnValue().Set(Nan::New(self->participants_));
+  }else {
+    info.GetReturnValue().Set(Nan::Undefined());
+  }
 }
 
 NAN_SETTER(SC2Coordinator::HandleSetters) {
-  SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
+    SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
 
-  if(!value->IsNumber()) {
-    return Nan::ThrowError(Nan::New("expected value to be a number").ToLocalChecked());
-  }
-
-  std::string propertyName = std::string(*Nan::Utf8String(property));
+    std::string propertyName = std::string(*Nan::Utf8String(property));
+    if (propertyName == "participants") {
+        if(!value->IsArray()){
+            return Nan::ThrowError(Nan::New("SC2Coordinator::participants - expected argument to be an array of SC2PlayerSetup objects").ToLocalChecked());
+        }
+        self->participants_.Reset(v8::Local<v8::Array>::Cast(value));
+    }else{
+        info.GetReturnValue().Set(Nan::Undefined());
+    }
 }

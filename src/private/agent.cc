@@ -34,23 +34,9 @@ NAN_METHOD(SC2Agent::New) {
     SC2Agent* agent = new SC2Agent();
     agent->Wrap(info.Holder());
 
-    // initialize it's values
-
     // return the wrapped javascript instance
     info.GetReturnValue().Set(info.Holder());
 }
-
-// NAN_METHOD(SC2Agent::OnGameStart) {
-//     SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
-//     if(!info[0]->IsFunction()){
-//         return Nan::ThrowError(Nan::New("SC2Agent::OnGameStart - expected argument to be a function").ToLocalChecked());
-//     }
-//     self->peristent_onGameStart_.Reset(Nan::To<v8::Function>(info[0]).ToLocalChecked());
-//     v8::Local<v8::Function> test = Nan::New(self->peristent_onGameStart_);
-//     char* name = (*Nan::Utf8String(test->GetName()->ToString()));
-//     info.GetReturnValue().Set(test);
-
-// }
 
 NAN_GETTER(SC2Agent::HandleGetters) {
   SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
@@ -74,5 +60,5 @@ NAN_SETTER(SC2Agent::HandleSetters) {
         }
         self->peristent_onGameStart_.Reset(Nan::To<v8::Function>(value).ToLocalChecked());
         info.GetReturnValue().Set(Nan::New(self->peristent_onGameStart_));
-        }
+    }
 }

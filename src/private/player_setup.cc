@@ -80,7 +80,7 @@ NAN_METHOD(SC2PlayerSetup::New) {
         player_setup->player_setup_->race = sc2::Race::Terran;
     }else if(race == "Protoss"){
         player_setup->player_setup_->race = sc2::Race::Protoss;
-    }else if(type == "Zerg"){
+    }else if(race == "Zerg"){
         player_setup->player_setup_->race = sc2::Race::Zerg;
     }else{
         return Nan::ThrowError(Nan::New("SC2PlayerSetup::New - the race must be one of this string : 'Terran', 'Protoss' or 'Zerg'").ToLocalChecked());
