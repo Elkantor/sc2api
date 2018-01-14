@@ -10,4 +10,4 @@ NAN_MODULE_INIT(InitModule) {
   SC2PlayerSetup::Init(target);
 }
 
-NODE_MODULE(NODE_GYP_MODULE_NAME, InitModule);
+NODE_MODULE(sc2api, InitModule);

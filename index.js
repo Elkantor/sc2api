@@ -1,36 +1,44 @@
 // this is how we will require our module
 const sc2 = require('./binding.js')
 
-const coordinator = new sc2.SC2Coordinator()
+const coordinator = new sc2.SC2Coordinator();
 
 var settings={
     path_exe: "D:\\StarCraft II\\Versions\\Base60321\\SC2.exe",
     realtime: true,
-    //map: "D:\\Projects\\SC2API\\maps\\Ladder\\(2)Bel'ShirVestigeLE (Void).SC2Map"
+    map: "D:\\Projects\\SC2API\\maps\\Ladder\\(2)Bel'ShirVestigeLE (Void).SC2Map"
 }
-// var result = vec1.loadSettings(settings);
 
-function isFoo(str){
-    return str === 'foo';
+coordinator.loadSettings(settings);
+
+function onGameStart(){
+    console.log("the game is started");
 }
 
 var agent_test = new sc2.SC2Agent();
-agent_test.onGameStart = isFoo;
+
+agent_test.onGameStart = onGameStart;
 
 var player = {
     type: "Participant",
-    race: "Terran",
+    race: "Protoss",
     difficulty: "Easy"
 }
+
 var player_setup = new sc2.SC2PlayerSetup(player);
 player_setup.setAgent(agent_test);
-console.log(player_setup);
 
 var player_setup2 = new sc2.SC2PlayerSetup({
-    type: "Participant",
+    type: "Computer",
     race: "Zerg",
     difficulty: "Easy"
 });
 
-console.log(coordinator.participants = [player_setup, player_setup2]);
+coordinator.participants = [player_setup, player_setup2];
+coordinator.launchStarcraft();
 
+function loopGame(error, result){
+    return coordinator.update(loopGame);
+}
+
+coordinator.update(loopGame);

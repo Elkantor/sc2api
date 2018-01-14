@@ -2,8 +2,49 @@
 #include "nan.h"
 #include "coordinator.h"
 #include "player_setup.h"
+#include "agent.h"
+#include "bot.h"
 #include <windows.h>
 #include <sc2utils/sc2_manage_process.h>
+
+class CoordinatorAsyncWorker : public Nan::AsyncWorker {
+public:
+    bool throws_error_;
+    sc2::Coordinator* coordinator_;
+    bool result;
+
+    CoordinatorAsyncWorker(sc2::Coordinator* coordinator, bool throws_error, Nan::Callback *callback)
+    : Nan::AsyncWorker(callback) {
+        this->throws_error_ = throws_error;
+        this->coordinator_ = coordinator;
+    }
+
+    void Execute() {
+        if (throws_error_) {
+            this->SetErrorMessage("An error occured!");
+            return;
+        }
+
+        // mimic long running task
+        result = coordinator_->Update();
+    }
+
+    void HandleOKCallback() {
+        Nan::HandleScope scope;
+        v8::Local<v8::Value> argv[] = {
+            Nan::New(result)
+        };
+        callback->Call(1, argv);
+    }
+
+    void HandleErrorCallback() {
+        Nan::HandleScope scope;
+        v8::Local<v8::Value> argv[] = {
+            Nan::New(this->ErrorMessage()).ToLocalChecked() // return error message
+        };
+        callback->Call(1, argv);
+    }
+};
 
 Nan::Persistent<v8::FunctionTemplate> SC2Coordinator::constructor;
 
@@ -17,6 +58,8 @@ NAN_MODULE_INIT(SC2Coordinator::Init) {
     Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("participants").ToLocalChecked(), SC2Coordinator::HandleGetters, SC2Coordinator::HandleSetters);
 
     Nan::SetPrototypeMethod(ctor, "loadSettings", LoadSettings);
+    Nan::SetPrototypeMethod(ctor, "launchStarcraft", LaunchStarcraft);
+    Nan::SetPrototypeMethod(ctor, "update", Update);
 
     target->Set(Nan::New("SC2Coordinator").ToLocalChecked(), ctor->GetFunction());
 }
@@ -35,6 +78,7 @@ NAN_METHOD(SC2Coordinator::New) {
     // create a new instance and wrap our javascript instance
     SC2Coordinator* coordinator = new SC2Coordinator();
     coordinator->Wrap(info.Holder());
+    coordinator->sc2_coordinator_ = new sc2::Coordinator();
 
     // return the wrapped javascript instance
     info.GetReturnValue().Set(info.Holder());
@@ -80,46 +124,44 @@ NAN_METHOD(SC2Coordinator::LoadSettings) {
 
   std::string settings = " -e " + path_exe;
   if(realtime){
-    settings += " -r ";
+    self->sc2_coordinator_->SetRealtime(realtime);
   }
   if(map != ""){
     self->map_ = map;
   }
   
   char* settings_chain[] = {(char*)settings.c_str()};
-  self->sc2_coordinator_ = new sc2::Coordinator();
   self->sc2_coordinator_->LoadSettings(2, settings_chain);
-  // sc2::Agent agent;
-  // self->sc2_coordinator_->SetParticipants({
-  //   sc2::CreateParticipant(sc2::Race::Terran, &agent),
-  //   sc2::CreateComputer(sc2::Race::Zerg)
-  // });
-  // self->sc2_coordinator_->LaunchStarcraft();
-  // self->sc2_coordinator_->StartGame(self->map_);
-  // while (self->sc2_coordinator_->Update()) {
-  // }
   info.GetReturnValue().Set(Nan::New(settings.c_str()).ToLocalChecked());
 }
 
 NAN_METHOD(SC2Coordinator::LaunchStarcraft){
     SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
-    sc2::Agent agent;
+    sc2::Agent* agent;
     v8::Local<v8::Array> array = Nan::New(self->participants_);
+    std::vector<sc2::PlayerSetup> participants;
     for(int i = 0; i < array->Length(); i++){
-        SC2PlayerSetup* player_setup = Nan::ObjectWrap::Unwrap<SC2PlayerSetup>(array->Get(i));
-        if(player_setup->persistent_agent_->){
-            
-        }
+        v8::Local<v8::Object> obj = array->Get(i)->ToObject();
+        SC2PlayerSetup* player_setup = Nan::ObjectWrap::Unwrap<SC2PlayerSetup>(obj);
+        participants.push_back(*(player_setup->player_setup_));
     }
-    agent = self->participants_
-    self->sc2_coordinator_->SetParticipants({
-        sc2::CreateParticipant(sc2::Race::Terran, &agent),
-        sc2::CreateComputer(sc2::Race::Zerg)
-    });
+    self->sc2_coordinator_->SetParticipants(participants);
     self->sc2_coordinator_->LaunchStarcraft();
     self->sc2_coordinator_->StartGame(self->map_);
-    while (self->sc2_coordinator_->Update()) {
-    }
+}
+
+NAN_METHOD(SC2Coordinator::Update) {
+    SC2Coordinator* self = Nan::ObjectWrap::Unwrap<SC2Coordinator>(info.This());
+
+    // starting the async worker
+    Nan::AsyncQueueWorker(new CoordinatorAsyncWorker(
+        self->sc2_coordinator_,
+        false,
+        new Nan::Callback(info[0].As<v8::Function>())
+    ));    
+
+    // return the wrapped javascript instance
+    info.GetReturnValue().Set(Nan::New(true));
 }
 
 NAN_GETTER(SC2Coordinator::HandleGetters) {
@@ -127,7 +169,7 @@ NAN_GETTER(SC2Coordinator::HandleGetters) {
 
   std::string propertyName = std::string(*Nan::Utf8String(property));
   if (propertyName == "participants") {
-    //info.GetReturnValue().Set(Nan::New(self->participants_));
+    info.GetReturnValue().Set(Nan::New(self->participants_));
   }else {
     info.GetReturnValue().Set(Nan::Undefined());
   }
@@ -142,6 +184,7 @@ NAN_SETTER(SC2Coordinator::HandleSetters) {
             return Nan::ThrowError(Nan::New("SC2Coordinator::participants - expected argument to be an array of SC2PlayerSetup objects").ToLocalChecked());
         }
         self->participants_.Reset(v8::Local<v8::Array>::Cast(value));
+        info.GetReturnValue().Set(Nan::New(self->participants_));
     }else{
         info.GetReturnValue().Set(Nan::Undefined());
     }

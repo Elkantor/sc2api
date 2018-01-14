@@ -9,6 +9,7 @@ public:
 	static NAN_METHOD(New);
 	static NAN_METHOD(LoadSettings);
     static NAN_METHOD(LaunchStarcraft);
+	static NAN_METHOD(Update);
 	static NAN_METHOD(SetParticipants);
 	static NAN_GETTER(HandleGetters);
 	static NAN_SETTER(HandleSetters);

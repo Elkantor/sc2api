@@ -4,21 +4,35 @@
   "main": "bindings.js",
   "scripts": {
     "build": "node-gyp build",
-    "install": "node-gyp rebuild --target=1.7.8 --arch=x64 --dist-url=https://atom.io/download/electron",
+    "install": "node-gyp rebuild",
     "start": "node ./index.js"
   },
   "dependencies": {
+    "index.js": "0.0.3",
     "nan": "^2.8.0",
     "npm": "^5.6.0",
     "start": "^5.1.0"
   },
   "description": "Bring the official Starcraft 2 C++ API to node.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "electron": "^1.7.10"
+  },
   "keywords": [
     "starcraft",
     "2",
     "Victor Gallet"
   ],
   "author": "Victor Gallet",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elkantor/sc2api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Elkantor/sc2api/issues"
+  },
+  "homepage": "https://github.com/Elkantor/sc2api#readme"
 }

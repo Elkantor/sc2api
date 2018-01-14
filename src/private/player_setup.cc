@@ -19,6 +19,8 @@ NAN_MODULE_INIT(SC2PlayerSetup::Init) {
     Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("agent").ToLocalChecked(), SC2PlayerSetup::HandleGetters);
 
     Nan::SetPrototypeMethod(ctor, "setAgent", SetAgent);
+    Nan::SetPrototypeMethod(ctor, "testAsynch", TestAsynch);
+
 
     target->Set(Nan::New("SC2PlayerSetup").ToLocalChecked(), ctor->GetFunction());
 }
@@ -114,7 +116,12 @@ NAN_METHOD(SC2PlayerSetup::New) {
 
 NAN_METHOD(SC2PlayerSetup::SetAgent) {
     SC2PlayerSetup* self = Nan::ObjectWrap::Unwrap<SC2PlayerSetup>(info.This());
+
     self->persistent_agent_.Reset(Nan::To<v8::Object>(info[0]).ToLocalChecked());
+    v8::Local<v8::Object> obj = info[0]->ToObject();
+    SC2Agent* agent = Nan::ObjectWrap::Unwrap<SC2Agent>(obj);
+    self->player_setup_->agent = agent->agent_;
+
     info.GetReturnValue().Set(Nan::New(self->persistent_agent_));
 }
 
@@ -196,5 +203,16 @@ NAN_GETTER(SC2PlayerSetup::HandleGetters) {
         info.GetReturnValue().Set(Nan::New(self->persistent_agent_));
     }else {
         info.GetReturnValue().Set(Nan::Undefined());
+    }
+}
+
+NAN_METHOD(SC2PlayerSetup::TestAsynch){
+    SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
+
+    if(!info[0]->IsBoolean()) {
+        return Nan::ThrowError(Nan::New("expected arg 2: bool throwsError").ToLocalChecked());
+    }
+    if(!info[1]->IsFunction()) {
+        return Nan::ThrowError(Nan::New("expected arg 3: function callback").ToLocalChecked());
     }
 }

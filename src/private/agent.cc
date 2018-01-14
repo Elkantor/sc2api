@@ -11,10 +11,7 @@ NAN_MODULE_INIT(SC2Agent::Init) {
     ctor->InstanceTemplate()->SetInternalFieldCount(1);
     ctor->SetClassName(Nan::New("SC2Agent").ToLocalChecked());
 
-    //Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("onGameStart").ToLocalChecked(), SC2Agent::HandleGetters, SC2Agent::HandleSetters);
     Nan::SetAccessor(ctor->InstanceTemplate(), Nan::New("onGameStart").ToLocalChecked(), SC2Agent::HandleGetters, SC2Agent::HandleSetters);
-
-    //Nan::SetPrototypeMethod(ctor, "onGameStart", OnGameStart);
 
     target->Set(Nan::New("SC2Agent").ToLocalChecked(), ctor->GetFunction());
 }
@@ -33,6 +30,8 @@ NAN_METHOD(SC2Agent::New) {
     // create a new instance and wrap our javascript instance
     SC2Agent* agent = new SC2Agent();
     agent->Wrap(info.Holder());
+    agent->agent_ = new SC2Bot();
+    agent->agent_->sc2_agent_ = agent;
 
     // return the wrapped javascript instance
     info.GetReturnValue().Set(info.Holder());
@@ -54,7 +53,6 @@ NAN_SETTER(SC2Agent::HandleSetters) {
 
     std::string propertyName = std::string(*Nan::Utf8String(property));
     if (propertyName == "onGameStart") {
-        SC2Agent* self = Nan::ObjectWrap::Unwrap<SC2Agent>(info.This());
         if(!value->IsFunction()){
             return Nan::ThrowError(Nan::New("SC2Agent::OnGameStart - expected argument to be a function").ToLocalChecked());
         }
