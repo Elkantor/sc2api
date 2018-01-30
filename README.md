@@ -42,7 +42,7 @@ To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) modu
 So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows). 
 Or follow the instructions listed here, to be sure to be able to use node-gyp as expected : [node-gyp instructions](https://github.com/nodejs/node-gyp).
 
-#  Getting started
+###  Getting started
 
 You will find all the documentation, with exemples, to quickly getting start in the [doc](https://github.com/Elkantor/sc2api/tree/master/doc) folder.
 
