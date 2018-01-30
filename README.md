@@ -7,6 +7,9 @@ The whole API will be usable fully with the power of javascript, to perform an e
 <code>
 Warning : This project is currently under development, and is likely to include all kinds of bugs.
 </code>
+<aside class="notice">
+You must replace `meowmeowmeow` with your personal API key.
+</aside>
 
 ## Installing / Getting started
 
