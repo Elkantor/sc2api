@@ -5,7 +5,7 @@ The role of this package is to bring the official Starcraft 2 C++ API to node.js
 The whole API will be usable fully with the power of javascript, to perform an easiest way to create and debugg your bot.
 
 <code>
-**This project is currently under development, and is likely to include all kinds of bugs.**
+Warning : This project is currently under development, and is likely to include all kinds of bugs.
 </code>
 
 ## Installing / Getting started
