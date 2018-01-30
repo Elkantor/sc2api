@@ -14,9 +14,6 @@
     "start": "^5.1.0"
   },
   "description": "Bring the official Starcraft 2 C++ API to node.js",
-  "devDependencies": {
-    "electron": "^1.7.10"
-  },
   "keywords": [
     "starcraft",
     "2",
