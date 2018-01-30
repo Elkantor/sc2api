@@ -45,7 +45,8 @@ Or follow the instructions listed here, to be sure to be able to use node-gyp as
 #  Getting started
 
 You will find all the documentation, with exemples, to quickly getting start in the [doc](https://github.com/Elkantor/sc2api/tree/master/doc) folder.
-For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/doc/getting_start.md) an exemple to quickly create a default bot (wich don't do anything, just set up the parameters and launch the game with the default bot behavior).
+
+For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/doc/getting_start.md) file show you an exemple to quickly create a default bot (wich don't do anything, just sets up the parameters and launch the game with the default bot behavior).
 
 ## Licensing
 
