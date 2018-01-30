@@ -33,7 +33,9 @@ npm install --save sc2api
 ### Built With
 
 [nan](https://github.com/nodejs/nan) (native abstractions for node.js), to be able to use the v8 C++ engine by google, without worring about the versions of v8.
+<br>
 [node-gyp](https://github.com/nodejs/node-gyp) for compiling C++ native addon modules for Node.js.
+<br>
 [sc2client-api](https://github.com/Blizzard/s2client-api), the official C++ API by Blizzard, to create bot for Starcraft 2.
 
 ### Prerequisites
