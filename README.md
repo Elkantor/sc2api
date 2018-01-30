@@ -17,9 +17,10 @@ Clone this repository in the folder of you choice by typing the following comman
 git clone https://github.com/Elkantor/sc2api.git
 ```
 
-And type this command to install the module :
+And to to install the module :
 
 ```shell
+cd sc2api
 npm install
 ```
 
