@@ -18,10 +18,10 @@ git clone https://github.com/Elkantor/sc2api.git
 ```
 Before to be able to install the module, you need to compile it.
 <br>
-To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) module (which works with python 2.7).
-So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows). 
+To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
+So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows, if it's your OS). 
 <br>
-Or follow the instructions listed here, to be sure to be able to use node-gyp as expected, depending of your OS : [node-gyp instructions](https://github.com/nodejs/node-gyp#on-windows).
+Or follow the instructions listed here, to be sure to be able to use node-gyp as expected, depending on your OS specifications : [node-gyp instructions](https://github.com/nodejs/node-gyp#on-windows).
 <br>
 
 And finally, to install the module :
