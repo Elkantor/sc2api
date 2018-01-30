@@ -24,7 +24,7 @@ cd sc2api
 npm install
 ```
 
-Or you can directly install the module by using npm like this, if you already have a node.js project sets up :
+Or you can directly install the module by using npm, if you already have a node.js project sets up :
 
 ```shell
 npm install --save sc2api
