@@ -2,6 +2,7 @@
 > A node.js module to easily create bots for Starcraft 2
 
 The role of this package is to bring the official Starcraft 2 C++ API to node.js, through a native node module.
+<br>
 The whole API will be usable fully with the power of javascript, to perform an easiest way to create and debugg your bot.
 
 <code>
@@ -32,17 +33,17 @@ npm install --save sc2api
 
 ### Built With
 
-[nan](https://github.com/nodejs/nan) (native abstractions for node.js), to be able to use the v8 C++ engine by google, without worring about the versions of v8.
-<br>
-[node-gyp](https://github.com/nodejs/node-gyp) for compiling C++ native addon modules for Node.js.
-<br>
-[sc2client-api](https://github.com/Blizzard/s2client-api), the official C++ API by Blizzard, to create bot for Starcraft 2.
+* [nan](https://github.com/nodejs/nan) (native abstractions for node.js), to be able to use the v8 C++ engine by google, without worring about the versions of v8.
+* [node-gyp](https://github.com/nodejs/node-gyp) for compiling C++ native addon modules for Node.js.
+* [sc2client-api](https://github.com/Blizzard/s2client-api), the official C++ API by Blizzard, to create bot for Starcraft 2.
 
 ### Prerequisites
 
 This node.js module is a native node module, which means you need to compile it when you install it, before to be able to use it.
+<br>
 To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) module (which works with python 2.7).
 So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows). 
+<br>
 Or follow the instructions listed here, to be sure to be able to use node-gyp as expected : [node-gyp instructions](https://github.com/nodejs/node-gyp).
 
 ###  Getting started
