@@ -22,10 +22,16 @@ And type this command to install the module :
 npm install
 ```
 
+Or you can directly install the module by using npm like this, if you already have a node.js project sets up :
+
+```shell
+npm install --save sc2api
+```
+
 ## Developing
 
 ### Built With
-List main libraries, frameworks used including versions (React, Angular etc...)
+[Nan](https://github.com/nodejs/nan) (native abstractions for node.js), to be able to use the v8 C++ engine by google, without worring about the versions of v8  
 
 ### Prerequisites
 What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
@@ -106,11 +112,4 @@ Documents your database design and schemas, relations etc...
 
 State what the license is and how to find the text version of the license.
 
-
-# sc2api
-## A node.js module to easily create bot for Starcraft 2
-<div style="text-align: left;">
-  The role of this package is to bring the official Starcraft 2 C++ API to node.js, through a native node module.
-  The whole API will be usable fully in JS.
-</div>
 
