@@ -57,15 +57,6 @@ For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/
 * [node-gyp](https://github.com/nodejs/node-gyp) for compiling C++ native addon modules for Node.js.
 * [sc2client-api](https://github.com/Blizzard/s2client-api), the official C++ API by Blizzard, to create bot for Starcraft 2.
 
-### Prerequisites
-
-This node.js module is a native node module, which means you need to compile it when you install it, before to be able to use it.
-<br>
-To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) module (which works with python 2.7).
-So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows). 
-<br>
-Or follow the instructions listed here, to be sure to be able to use node-gyp as expected : [node-gyp instructions](https://github.com/nodejs/node-gyp).
-
 ## Licensing
 
 (The MIT License)
