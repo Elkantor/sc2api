@@ -9,7 +9,7 @@ The whole API will be usable fully with the power of javascript, to perform an e
 Warning : This project is currently under development, and is likely to include all kinds of bugs.
 </code>
 
-## Installing
+## Installing / Getting started
 
 Clone this repository in the folder of you choice by typing the following command : 
 
@@ -29,6 +29,12 @@ Or you can directly install the module by using npm like this, if you already ha
 npm install --save sc2api
 ```
 
+## Documentation 
+
+You will find all the documentation, with exemples, to quickly getting start in the [doc](https://github.com/Elkantor/sc2api/tree/master/doc) folder.
+
+For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/doc/getting_start.md) file show you an exemple to quickly create a default bot (wich don't do anything, just sets up the parameters and launch the game with the default bot behavior).
+
 ## Developing
 
 ### Built With
@@ -45,12 +51,6 @@ To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) modu
 So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows). 
 <br>
 Or follow the instructions listed here, to be sure to be able to use node-gyp as expected : [node-gyp instructions](https://github.com/nodejs/node-gyp).
-
-###  Getting started
-
-You will find all the documentation, with exemples, to quickly getting start in the [doc](https://github.com/Elkantor/sc2api/tree/master/doc) folder.
-
-For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/doc/getting_start.md) file show you an exemple to quickly create a default bot (wich don't do anything, just sets up the parameters and launch the game with the default bot behavior).
 
 ## Licensing
 
