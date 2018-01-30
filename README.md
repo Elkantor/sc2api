@@ -40,6 +40,8 @@ npm install --save sc2api
 ## Documentation 
 
 You will find all the documentation, with exemples, to quickly getting start in the [doc](https://github.com/Elkantor/sc2api/tree/master/doc) folder.
+<br>
+<code> Warning : the documentation is currently under development, and will be available as soon as possible. </code> 
 
 For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/doc/getting_start.md) file show you an exemple to quickly create a default bot (wich don't do anything, just sets up the parameters and launch the game with the default bot behavior).
 
