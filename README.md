@@ -1,7 +1,7 @@
+[![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)
+
 # sc2api
 > A node.js module to easily create bots for Starcraft 2 in javascript
-
-[![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)
 
 The role of this package is to bring the official Starcraft 2 C++ API to node.js, through a native node module.
 <br>
