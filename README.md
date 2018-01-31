@@ -1,4 +1,7 @@
 [![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)
+<a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button&via=twitterdev&related=twitterapi%2Ctwitter&hashtags=example%2Cdemo&text=custom%20share%20text">
+<img src="image:https://img.shields.io/twitter/url/http/shields.io.svg?style=social[Twitter"/>
+</a>
 
 # sc2api
 > A node.js module to easily create bots for Starcraft 2 in javascript
