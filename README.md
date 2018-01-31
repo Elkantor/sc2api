@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)  ![stability](https://img.shields.io/badge/stability-unstable-orange.svg)  ![contact](https://img.shields.io/badge/Contact%20me%20on%20Twitter-%40TheElkantor-blue.svg)
+[![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)  ![stability](https://img.shields.io/badge/stability-unstable-orange.svg)  [![contact](https://img.shields.io/badge/Contact%20me%20on%20Twitter-%40TheElkantor-blue.svg)](href="https://twitter.com/intent/tweet?screen_name=TheElkantor")
 
 # sc2api
 > A node.js module to easily create bots for Starcraft 2 in javascript
