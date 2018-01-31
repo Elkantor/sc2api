@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)
-<a class="twitter-mention-button" href="https://twitter.com/intent/tweet">Tweet</a>
+<a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button%2Fmention-button&amp;ref_src=twsrc%5Etfw&amp;screen_name=TheElkantor&amp;text=&amp;tw_p=tweetbutton" class="btn" id="b"><i></i><span class="label" id="l">Tweet to <b>@TheElkantor</b></span></a>
 
 # sc2api
 > A node.js module to easily create bots for Starcraft 2 in javascript
