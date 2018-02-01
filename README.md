@@ -19,7 +19,7 @@ Before to be able to install the module, you need to compile it.
 To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
 So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows, if it's your OS). 
 <br>
-Or follow the instructions listed here, to be sure to be able to use node-gyp as expected, depending on your OS specifications : [node-gyp instructions](https://github.com/nodejs/node-gyp#on-windows).
+Or follow the instructions listed in the official [node-gyp installation guide](https://github.com/nodejs/node-gyp#on-windows), to be sure to be able to use node-gyp as expected, depending on your OS.
 <br>
 
 You can directly install the module by using npm, if you already have a node.js project setted up :
@@ -35,6 +35,7 @@ yarn add sc2api
 ```
 
 Or choose to install it manually by cloning this repository in the folder of you choice with the following command :
+</br>
 (for exemple, if you don't already have a node.js project setted up)
 
 ```shell
