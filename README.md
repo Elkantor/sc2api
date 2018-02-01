@@ -14,6 +14,14 @@ The whole API will be usable fully with the power of javascript, to perform an e
 
 ## Installing / Getting started
 
+Before to be able to install the module, you need to compile it.
+<br>
+To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
+So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows, if it's your OS). 
+<br>
+Or follow the instructions listed here, to be sure to be able to use node-gyp as expected, depending on your OS specifications : [node-gyp instructions](https://github.com/nodejs/node-gyp#on-windows).
+<br>
+
 You can directly install the module by using npm, if you already have a node.js project setted up :
 
 ```shell
@@ -26,7 +34,7 @@ Or clone this repository in the folder of you choice by typing the following com
 git clone https://github.com/Elkantor/sc2api.git
 ```
 
-If you clone this repository, you need to initialize a new node.js project with the following command : 
+If you clone this repository, to use the default exemple in the index.js file, you need to initialize a new node.js project with the following command : 
 <blockquote>
 <p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js and npm installed, use a package manager like <a href="https://chocolatey.org">chocolatey</a> to get it on windows, for exemple, or download and install it manually from its official website : https://nodejs.org/. 
 </p>
@@ -36,14 +44,6 @@ If you clone this repository, you need to initialize a new node.js project with 
 cd sc2api
 npm init
 ```
-
-Before to be able to install the module, you need to compile it.
-<br>
-To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
-So be sure to install python 2.7 as well as the Visual C++ Build Environment (for windows, if it's your OS). 
-<br>
-Or follow the instructions listed here, to be sure to be able to use node-gyp as expected, depending on your OS specifications : [node-gyp instructions](https://github.com/nodejs/node-gyp#on-windows).
-<br>
 
 And finally, install the module :
 
