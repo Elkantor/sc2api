@@ -31,6 +31,7 @@ And finally, to install the module :
 
 ```shell
 cd sc2api
+npm init
 npm install
 ```
 
