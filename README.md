@@ -27,7 +27,7 @@ So be sure to install python 2.7 as well as the Visual C++ Build Environment (fo
 Or follow the instructions listed here, to be sure to be able to use node-gyp as expected, depending on your OS specifications : [node-gyp instructions](https://github.com/nodejs/node-gyp#on-windows).
 <br>
 
-And finally, to install the module :
+And finally, initialize a new node project and install the module :
 
 ```shell
 cd sc2api
