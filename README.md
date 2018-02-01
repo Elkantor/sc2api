@@ -14,13 +14,19 @@ The whole API will be usable fully with the power of javascript, to perform an e
 
 ## Installing / Getting started
 
-Clone this repository in the folder of you choice by typing the following command : 
+You can directly install the module by using npm, if you already have a node.js project setted up :
+
+```shell
+npm install --save sc2api
+```
+
+Or clone this repository in the folder of you choice by typing the following command : 
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
 ```
 
-Next, you need to initialize a new node.js project with the following command : 
+If you clone this repository, you need to initialize a new node.js project with the following command : 
 <blockquote>
 <p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js and npm installed, use a package manager like <a href="https://chocolatey.org">chocolatey</a> to get it on windows, for exemple, or download and install it manually from its official website : https://nodejs.org/. 
 </p>
@@ -43,12 +49,6 @@ And finally, install the module :
 
 ```shell
 npm install
-```
-
-Or you can directly install the module by using npm, if you already have a node.js project setted up :
-
-```shell
-npm install --save sc2api
 ```
 
 ## Documentation 
