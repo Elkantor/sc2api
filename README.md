@@ -34,7 +34,7 @@ Or by using yarn :
 yarn add sc2api
 ```
 
-Or choose to install it manually by cloning this repository in the folder of you choice, with the following command : 
+Or choose to install it manually by cloning this repository in the folder of you choice (if you already don't have a node.js project setted up), with the following command : 
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
