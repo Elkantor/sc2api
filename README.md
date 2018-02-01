@@ -70,6 +70,13 @@ For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/
 * [node-gyp](https://github.com/nodejs/node-gyp) for compiling C++ native addon modules for Node.js.
 * [sc2client-api](https://github.com/Blizzard/s2client-api), the official C++ API by Blizzard, to create bot for Starcraft 2.
 
+### Rules / Coding Standard
+
+This project follow some rules, to be as consistent and comprehensible as possible.
+
+* [semver](https://semver.org/), for the version of the package.
+* [Google C++ Code Style](https://google.github.io/styleguide/cppguide.html), is the coding convention I try to conform for the C++ code of this project.
+
 ## Licensing
 
 (The ISC License)
