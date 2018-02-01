@@ -28,13 +28,19 @@ You can directly install the module by using npm, if you already have a node.js 
 npm install --save sc2api
 ```
 
+Or by using yarn : 
+
+```shell
+yarn add sc2api
+```
+
 Or choose to install it manually by cloning this repository in the folder of you choice, with the following command : 
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
 ```
 
-next, you need to initialize a new node.js project with the following command : 
+Next, you need to initialize a new node.js project with the following command : 
 <blockquote>
 <p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js and npm installed, use a package manager like <a href="https://chocolatey.org">chocolatey</a> to get it on windows, for exemple, or download and install it manually from its official website : https://nodejs.org/. 
 </p>
