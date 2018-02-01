@@ -19,6 +19,18 @@ Clone this repository in the folder of you choice by typing the following comman
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
 ```
+
+Next, you need to initialize a new node.js project with the following command : 
+<blockquote>
+<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't have npm installed, use tool like chocolateley to install it, for exemple, or download and install it manually from its official website : [https://nodejs.org/](https://nodejs.org/en/)). 
+</p>
+</blockquote>
+
+```shell
+cd sc2api
+npm init
+```
+
 Before to be able to install the module, you need to compile it.
 <br>
 To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
@@ -30,8 +42,6 @@ Or follow the instructions listed here, to be sure to be able to use node-gyp as
 And finally, initialize a new node project and install the module :
 
 ```shell
-cd sc2api
-npm init
 npm install
 ```
 
