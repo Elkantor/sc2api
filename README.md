@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)  ![stability](https://img.shields.io/badge/stability-unstable-orange.svg)  [![contact](https://img.shields.io/badge/Contact%20me%20on%20Twitter-%40TheElkantor-blue.svg)](https://twitter.com/intent/tweet?screen_name=TheElkantor)
+[![npm version](https://badge.fury.io/js/sc2api.svg)](https://badge.fury.io/js/sc2api)  ![stability](https://img.shields.io/badge/stability-unstable-orange.svg)   [![Join the chat at https://gitter.im/sahat/hackathon-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sahat/hackathon-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![contact](https://img.shields.io/badge/Contact%20me%20on%20Twitter-%40TheElkantor-blue.svg)](https://twitter.com/intent/tweet?screen_name=TheElkantor)
 
 # sc2api
 > A node.js module to easily create bots for Starcraft 2 in javascript
