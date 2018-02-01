@@ -77,6 +77,14 @@ This project follow some rules, to be as consistent and comprehensible as possib
 * [semver](https://semver.org/), for the version of the package.
 * [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) : I do my best to try to conform to the Google C++ Style Guide, for the C++ code of this native addon.
 
+## Additional Downloads
+
+### Maps and Replays
+
+Just like the official Starcraft 2 C++ API, this repository only comes with a few maps for testing.
+
+Additional maps and replays can be found [here](https://github.com/Blizzard/s2client-proto#downloads).
+
 ## Licensing
 
 (The ISC License)
