@@ -22,7 +22,7 @@ git clone https://github.com/Elkantor/sc2api.git
 
 Next, you need to initialize a new node.js project with the following command : 
 <blockquote>
-<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js and npm installed, use tool like <a href="https://chocolatey.org">chocolatey</a> on windows, for exemple, to get it, or download and install it manually from its official website : https://nodejs.org/. 
+<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js and npm installed, use package manager like <a href="https://chocolatey.org">chocolatey</a> on windows, for exemple, to get it, or download and install it manually from its official website : https://nodejs.org/. 
 </p>
 </blockquote>
 
