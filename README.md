@@ -34,7 +34,7 @@ Or clone this repository in the folder of you choice by typing the following com
 git clone https://github.com/Elkantor/sc2api.git
 ```
 
-If you clone this repository, to use the default exemple in the index.js file, you need to initialize a new node.js project with the following command : 
+If you clone this repository, you need to initialize a new node.js project with the following command : 
 <blockquote>
 <p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js and npm installed, use a package manager like <a href="https://chocolatey.org">chocolatey</a> to get it on windows, for exemple, or download and install it manually from its official website : https://nodejs.org/. 
 </p>
