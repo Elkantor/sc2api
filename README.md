@@ -28,7 +28,7 @@ You can directly install the module by using npm, if you already have a node.js 
 npm install --save sc2api
 ```
 
-Or clone this repository in the folder of you choice by typing the following command : 
+Or choose to install it manually by cloning this repository in the folder of you choice, with the following command : 
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
