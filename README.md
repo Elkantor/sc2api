@@ -75,7 +75,7 @@ For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/
 This project follow some rules, to be as consistent and comprehensible as possible.
 
 * [semver](https://semver.org/), for the version of the package.
-* [Google C++ Code Style](https://google.github.io/styleguide/cppguide.html), is the coding convention I try to conform for the C++ code of this project.
+* [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html), is the coding convention I try to conform for the C++ code of this project.
 
 ## Licensing
 
