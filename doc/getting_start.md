@@ -14,10 +14,12 @@ const coordinator = new sc2.SC2Coordinator();
 ```
 
 Then, you can define the settings in a js object, and pass it to the coordinator :
+
 <blockquote>
-<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> Just like the official Starcraft 2 C++ API, this repository only comes with a few maps for testing. Additional maps and replays can be found <a href="https://github.com/Blizzard/s2client-proto#downloads">here</a>.
+<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> Just like the official Starcraft 2 C++ API, this repository only comes with a few maps for testing. Additional maps and replays can be found <a href='https://github.com/Blizzard/s2client-proto#downloads'>here</a>.
 </p>
 </blockquote>
+
 ```js
 var settings={
     path_exe: "D:\\StarCraft II\\Versions\\Base60321\\SC2.exe", // the path of your Starcraft 2 executable file
