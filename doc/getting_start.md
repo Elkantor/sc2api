@@ -1,7 +1,6 @@
 # Getting Start with sc2api
 
-## How to work with the module ?
-The first thing to write, for using this module is the require statement :
+First, add this following line to require the module :
 
 ```js
 // this is how we will require our module
