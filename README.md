@@ -16,6 +16,7 @@ The whole API will be usable fully with the power of javascript, to perform an e
 
 You have two options to use this module, one easiest by installing it with npm (or yarn), and one a little more hard, by cloning this repository and building & installing it manually.
 </br>
+</br>
 So for the first option, you can directly install the module by using npm, if you already have a node.js project setted up :
 
 ```shell
@@ -30,11 +31,10 @@ yarn add sc2api
 <br>
 For the second option, if you choose to build & install it manually by cloning this repository, you can follow the commands listed below (all these commands assume that you don't already have a node.js project initialized) : 
 </br>
-
+</br>
 First, clone the repository in the folder of you choice with the following command :
 </br>
 (for exemple, if you don't already have a node.js project setted up)
-
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
