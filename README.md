@@ -37,6 +37,7 @@ First, clone the repository in the folder of you choice with the following comma
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
+cd sc2api
 ```
 
 Next, you need to initialize a new node.js project with the following command : 
@@ -44,11 +45,6 @@ Next, you need to initialize a new node.js project with the following command :
 <p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> If you don't already have node.js installed, use a package manager like <a href="https://chocolatey.org">chocolatey</a> to get it on windows, for exemple, or download and install it manually from its official website : https://nodejs.org/. 
 </p>
 </blockquote>
-
-```shell
-cd sc2api
-npm init
-```
 
 Before to be able to install the module, you need to compile it.
 <br>
