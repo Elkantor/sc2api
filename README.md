@@ -55,7 +55,7 @@ Follow the instructions listed in the official [node-gyp installation guide](htt
 
 And finally, you can build and install the module with the following command : 
 <blockquote>
-<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> This command will do several things : it will compile this native module, calling the "node-gyp configure" & "node-gyp build" commands, and finally install the module to be accessible by node.js) :
+<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> This command is actually going to do several things : it will compile this native module, calling the "node-gyp configure" & "node-gyp build" commands, and install the module to be accessible by node.js) :
 </p>
 </blockquote>
 
