@@ -14,14 +14,9 @@ The whole API will be usable fully with the power of javascript, to perform an e
 
 ## Installing / Getting started
 
-Before to be able to install the module, you need to compile it.
-<br>
-To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
+You have two options to use this module, one easiest by installing it with npm (or yarn), and one a little more hard, by cloning this repository and building & installing it manually.
 </br>
-Follow the instructions listed in the official [node-gyp installation guide](https://github.com/nodejs/node-gyp#on-windows), to be sure to be able to use node-gyp as expected, depending on your OS.
-<br>
-
-You can directly install the module by using npm, if you already have a node.js project setted up :
+So for the first option, you can directly install the module by using npm, if you already have a node.js project setted up :
 
 ```shell
 npm install --save sc2api
@@ -33,7 +28,9 @@ Or by using yarn :
 yarn add sc2api
 ```
 
-Or choose to install it manually by cloning this repository in the folder of you choice with the following command :
+For the second option, if you choose to build & install it manually by cloning this repository, you can follow the commands listed here (all these commands assume that you don't already have a node.js project initialized) : 
+</br>
+First, clone the repository in the folder of you choice with the following command :
 </br>
 (for exemple, if you don't already have a node.js project setted up)
 
@@ -52,7 +49,18 @@ cd sc2api
 npm init
 ```
 
-And finally, install the module :
+Before to be able to install the module, you need to compile it.
+<br>
+To do that, this project use [node-gyp](https://github.com/nodejs/node-gyp) (a node.js module which works with python 2.7).
+</br>
+Follow the instructions listed in the official [node-gyp installation guide](https://github.com/nodejs/node-gyp#on-windows), to be sure to be able to use node-gyp as expected, depending on your OS.
+<br>
+
+And finally, you can build and install the module with the following command : 
+<blockquote>
+<p><g-emoji class="g-emoji" alias="bulb" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png" ios-version="6.0"><img class="emoji" alt="bulb" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a1.png"></g-emoji> This command will compile this native module, calling "node-gyp configure" & "node-gyp build" commands, and finally install the module to be accessible by node.js) :
+</p>
+</blockquote>
 
 ```shell
 npm install
