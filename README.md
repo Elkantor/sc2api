@@ -30,9 +30,11 @@ yarn add sc2api
 <br>
 For the second option, if you choose to build & install it manually by cloning this repository, you can follow the commands listed below (all these commands assume that you don't already have a node.js project initialized) : 
 </br>
+
 First, clone the repository in the folder of you choice with the following command :
 </br>
 (for exemple, if you don't already have a node.js project setted up)
+
 
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
