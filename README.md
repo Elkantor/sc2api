@@ -35,7 +35,7 @@ For the second option, if you choose to build & install it manually by cloning t
 First, clone the repository in the folder of you choice with the following command :
 </br>
 (for exemple, if you don't already have a node.js project setted up)
-
+</br>
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
 ```
