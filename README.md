@@ -36,6 +36,7 @@ First, clone the repository in the folder of you choice with the following comma
 </br>
 (for exemple, if you don't already have a node.js project setted up)
 </br>
+
 ```shell
 git clone https://github.com/Elkantor/sc2api.git
 ```
