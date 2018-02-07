@@ -28,7 +28,7 @@ Or by using yarn :
 yarn add sc2api
 ```
 
-For the second option, if you choose to build & install it manually by cloning this repository, you can follow the commands listed here (all these commands assume that you don't already have a node.js project initialized) : 
+For the second option, if you choose to build & install it manually by cloning this repository, you can follow the commands listed below (all these commands assume that you don't already have a node.js project initialized) : 
 </br>
 First, clone the repository in the folder of you choice with the following command :
 </br>
