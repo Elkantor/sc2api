@@ -78,7 +78,7 @@ For exemple, the [getting_start](https://github.com/Elkantor/sc2api/blob/master/
 
 ### Built With
 
-* [nan](https://github.com/nodejs/nan) (native abstractions for node.js), to be able to use the v8 C++ engine by google, without worring about the versions v8 versions.
+* [nan](https://github.com/nodejs/nan) (native abstractions for node.js), to be able to use the v8 google's C++ engine, without worring about its version.
 * [node-gyp](https://github.com/nodejs/node-gyp) for compiling C++ native addon modules for Node.js.
 * [sc2client-api](https://github.com/Blizzard/s2client-api), the official C++ API by Blizzard, to create bot for Starcraft 2.
 
